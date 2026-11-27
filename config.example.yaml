@@ -1,0 +1,14 @@
+# استوديو ريلز - الإعدادات
+width: 1080
+height: 1920
+fps: 30
+language: ar
+caption_style: hormozi     # hormozi | mrbeast | behind_person | podcast | cinematic | motion3d | numbers
+zoom_style: mixed
+beat_sync: true
+stock_enabled: true
+stock_provider: pexels
+voiceover_voice: ar-EG-SalmaNeural
+music_volume: 0.18
+sfx_volume: 0.5
+whisper_model: small
