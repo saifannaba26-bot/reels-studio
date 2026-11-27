@@ -1,0 +1,6 @@
+# مثال: ريل هورموزي مع تعليق صوتي
+caption_style: hormozi
+beat_sync: true
+stock_enabled: true
+voiceover_voice: ar-EG-SalmaNeural
+whisper_model: small
