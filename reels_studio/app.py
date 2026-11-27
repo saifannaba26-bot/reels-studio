@@ -27,7 +27,12 @@ def build(video, music, script, style_key, beat_sync, stock_on):
 
 style_choices = [(f"{STYLES[k].name_ar} - {STYLES[k].notes}", k) for k in STYLE_ORDER]
 
-with gr.Blocks(title="استوديو ريلز", rtl=True) as demo:
+RTL_CSS = """
+.gradio-container { direction: rtl; text-align: right; }
+.gradio-container textarea, .gradio-container input[type=text] { direction: rtl; text-align: right; }
+"""
+
+with gr.Blocks(title="استوديو ريلز", css=RTL_CSS) as demo:
     gr.Markdown("# 🎬 استوديو ريلز\nارفع الفيديو، اختار ستايل الكابشن، واستلم الريل جاهز.")
     with gr.Row():
         with gr.Column():
