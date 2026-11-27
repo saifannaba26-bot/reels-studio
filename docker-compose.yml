@@ -1,0 +1,11 @@
+services:
+  reels-studio:
+    build: .
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+    environment:
+      - PEXELS_API_KEY=${PEXELS_API_KEY:-}
+      - PIXABAY_API_KEY=${PIXABAY_API_KEY:-}
