@@ -9,7 +9,7 @@ librosa==0.10.2.post1
 
 # Speech: transcription + voiceover
 faster-whisper==1.0.3
-edge-tts==6.1.12
+edge-tts>=7
 
 # Arabic text (used for keyword handling and previews; final shaping is done by libass)
 arabic-reshaper==3.0.0
