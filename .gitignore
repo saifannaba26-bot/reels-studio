@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+output/
+input/
+*.mp4
+!examples/*.mp4
+.DS_Store
+.env
