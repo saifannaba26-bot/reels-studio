@@ -2,7 +2,7 @@ services:
   reels-studio:
     build: .
     ports:
-      - "7860:7860"
+      - "127.0.0.1:7860:7860"
     volumes:
       - ./input:/app/input
       - ./output:/app/output
