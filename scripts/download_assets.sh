@@ -23,7 +23,7 @@ fi
 gen() { [ -f "$SFX_DIR/$1" ] || ffmpeg -y -v error -f lavfi -i "$2" -t "$3" "$SFX_DIR/$1"; }
 gen whoosh.wav "anoisesrc=color=pink:amplitude=0.4,lowpass=f=3000,volume='t/0.4':eval=frame" 0.4
 gen impact.wav "sine=frequency=60,volume='(1-t/0.5)^2*2':eval=frame" 0.5
-gen riser.wav  "sine=frequency='200+800*t/1.2':eval=frame,volume=0.4" 1.2
+gen riser.wav "aevalsrc='sin(2*PI*(200*t+400*t*t/1.2))*0.4':s=44100:d=1.2" 1.2
 gen pop.wav    "sine=frequency=800,volume='(1-t/0.15)^3*1.5':eval=frame" 0.15
 gen ding.wav   "sine=frequency=1567,volume='(1-t/0.8)^2':eval=frame" 0.8
 echo "assets ready"
