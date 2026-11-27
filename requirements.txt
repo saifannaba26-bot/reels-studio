@@ -21,6 +21,10 @@ PyYAML==6.0.2
 
 # Web UI for non-coders
 gradio==4.44.1
+# gradio 4.44.1 breaks on newer pydantic/fastapi/starlette (schema TypeError on every request)
+pydantic==2.10.6
+fastapi==0.115.6
+starlette==0.41.3
 
 # Optional: person masking for the "text behind person" caption style
 # rembg==2.0.57
