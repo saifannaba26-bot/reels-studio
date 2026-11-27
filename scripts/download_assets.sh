@@ -7,16 +7,19 @@ FONT_DIR=assets/fonts
 SFX_DIR=assets/sfx
 mkdir -p "$FONT_DIR" "$SFX_DIR"
 
-if [ ! -f "$FONT_DIR/Cairo-Bold.ttf" ]; then
-  curl -sL -o /tmp/cairo.zip "https://fonts.google.com/download?family=Cairo" \
-    && unzip -o /tmp/cairo.zip -d "$FONT_DIR" || \
-  curl -sL -o "$FONT_DIR/Cairo-Bold.ttf" \
-    "https://github.com/google/fonts/raw/main/ofl/cairo/Cairo%5Bslnt%2Cwght%5D.ttf"
-fi
-if [ ! -f "$FONT_DIR/Amiri-Regular.ttf" ]; then
-  curl -sL -o "$FONT_DIR/Amiri-Regular.ttf" \
-    "https://github.com/aliftype/amiri/raw/master/fonts/Amiri-Regular.ttf" || true
-fi
+is_font() {  # TrueType / OpenType magic bytes, so an HTML error page is rejected
+  case "$(head -c4 "$1" 2>/dev/null | od -An -tx1 | tr -d ' \n')" in
+    00010000|4f54544f|74727565) return 0 ;; *) return 1 ;;
+  esac
+}
+fetch_font() {  # name url
+  if [ -s "$FONT_DIR/$1" ] && is_font "$FONT_DIR/$1"; then return 0; fi
+  rm -f "$FONT_DIR/$1"
+  curl -fsSL --retry 3 -o "$FONT_DIR/$1" "$2"
+  is_font "$FONT_DIR/$1" || { echo "ERROR: $1 is not a valid font file" >&2; exit 1; }
+}
+fetch_font Cairo-Bold.ttf "https://github.com/google/fonts/raw/main/ofl/cairo/Cairo%5Bslnt%2Cwght%5D.ttf"
+fetch_font Amiri-Regular.ttf "https://github.com/google/fonts/raw/main/ofl/amiri/Amiri-Regular.ttf"
 
 # Starter SFX: synthesize simple whoosh/impact/pop/ding with ffmpeg so the
 # pipeline works out of the box; replace with your own pack anytime.
