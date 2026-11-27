@@ -1,0 +1,26 @@
+# Core media
+ffmpeg-python==0.2.0
+numpy==1.26.4
+soundfile==0.12.1
+pydub==0.25.1
+
+# Beat detection
+librosa==0.10.2.post1
+
+# Speech: transcription + voiceover
+faster-whisper==1.0.3
+edge-tts==6.1.12
+
+# Arabic text (used for keyword handling and previews; final shaping is done by libass)
+arabic-reshaper==3.0.0
+python-bidi==0.4.2
+
+# Stock media + utilities
+requests==2.32.3
+PyYAML==6.0.2
+
+# Web UI for non-coders
+gradio==4.44.1
+
+# Optional: person masking for the "text behind person" caption style
+# rembg==2.0.57
